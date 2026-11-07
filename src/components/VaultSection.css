@@ -1,0 +1,799 @@
+/* ============================================================
+   VAULT (NFT INVENTORY) COMPONENT STYLES
+   ============================================================ */
+
+.vault-container {
+  padding: 10px 0;
+}
+
+.vault-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.vault-summary-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--rog-border);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.vault-summary-pill strong {
+  color: var(--rog-cyan);
+}
+
+.empty-vault-card {
+  max-width: 600px;
+  margin: 60px auto;
+  background: var(--rog-dark-card);
+  border: 1px dashed var(--rog-border);
+  border-radius: 12px;
+  padding: 48px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.empty-vault-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.empty-vault-card p {
+  color: var(--rog-text-dim);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.vault-nft-card {
+  background: var(--rog-dark-card);
+  border: 1px solid var(--rog-border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vault-nft-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--rog-cyan);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--rog-cyan-glow);
+}
+
+.vault-nft-image-box {
+  position: relative;
+  background: #090a0f;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vault-nft-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nft-img-fallback {
+  color: var(--rog-cyan);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.vault-token-id {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--rog-red);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.vault-nft-details {
+  padding: 20px;
+}
+
+.vault-nft-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.vault-nft-desc {
+  font-size: 0.8rem;
+  color: var(--rog-text-dim);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.vault-traits-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.trait-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--rog-border);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--rog-text-dim);
+}
+
+.trait-tag strong {
+  color: #ffffff;
+}
+
+.inspect-nft-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--rog-cyan);
+  color: var(--rog-cyan);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.inspect-nft-btn:hover {
+  background: var(--rog-cyan);
+  color: #000000;
+}
+
+/* Inspect Modal */
+.modal-content.inspect-modal {
+  max-width: 850px;
+}
+
+.inspect-modal-body {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 28px;
+  padding: 28px;
+}
+
+.inspect-image-panel img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--rog-border);
+}
+
+.token-cert-badge {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: var(--rog-cyan);
+  font-weight: 700;
+}
+
+.token-id-banner {
+  color: var(--rog-red);
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.inspect-desc {
+  color: var(--rog-text-dim);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.inspect-info-panel h4 {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.attribute-item {
+  background: #090a10;
+  border: 1px solid var(--rog-border);
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.attr-type {
+  font-size: 0.68rem;
+  color: var(--rog-text-dim);
+  text-transform: uppercase;
+}
+
+.attr-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.contract-address-info {
+  font-size: 0.72rem;
+  color: var(--rog-text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ca-value {
+  font-family: var(--font-mono);
+  color: var(--rog-cyan);
+}
+
+@media (max-width: 900px) {
+  .inspect-modal-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ============================================================
+   BURN FEATURE STYLES
+   ============================================================ */
+
+/* Hint text below the header */
+.vault-hint {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--rog-text-dim);
+}
+
+.burn-hint-text {
+  color: #ff4444;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Burn button inside the inspect modal */
+.burn-btn-modal {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.burn-btn-modal:hover {
+  background: #ff4444;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+}
+
+/* Burn modal backdrop – slightly more opaque/reddish */
+.burn-backdrop {
+  z-index: 1100;
+}
+
+/* Burn modal container */
+.burn-modal {
+  max-width: 600px;
+  border: 1px solid #ff4444 !important;
+  box-shadow: 0 0 40px rgba(255, 68, 68, 0.15);
+}
+
+.burn-modal-header {
+  border-bottom-color: #ff4444 !important;
+}
+
+.burn-status {
+  color: #ff4444 !important;
+}
+
+.burn-modal-body {
+  padding: 28px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* NFT preview in burn modal */
+.burn-preview {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--rog-border);
+  background: #090a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.burn-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Burn info text */
+.burn-info {
+  flex: 1;
+}
+
+.burn-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.burn-token-id {
+  color: var(--rog-red);
+  font-weight: 900;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+/* Warning box */
+.burn-warning-box {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(255, 68, 68, 0.08);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.burn-warning-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.burn-warning-headline {
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #ff4444;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.burn-warning-text {
+  font-size: 0.8rem;
+  color: var(--rog-text-dim);
+  line-height: 1.5;
+}
+
+.burn-warning-text strong {
+  color: #ff4444;
+}
+
+/* Action buttons */
+.burn-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.burn-confirm-btn {
+  flex: 1;
+  padding: 12px 16px;
+  background: #ff4444;
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.burn-confirm-btn:hover:not(:disabled) {
+  background: #ff6666;
+  box-shadow: 0 0 25px rgba(255, 68, 68, 0.5);
+}
+
+.burn-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.burn-cancel-btn {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  color: var(--rog-text-dim);
+  border: 1px solid var(--rog-border);
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.burn-cancel-btn:hover:not(:disabled) {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.burn-cancel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Responsive burn modal */
+@media (max-width: 600px) {
+  .burn-modal-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .burn-warning-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .burn-actions {
+    flex-direction: column;
+  }
+}
+
+
+/* ============================================================
+   1-OF-1 PROTECTED STYLES
+   ============================================================ */
+
+/* 1-of-1 Card Highlight */
+.vault-nft-card.exclusive-card {
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.08);
+}
+
+.vault-nft-card.exclusive-card:hover {
+  border-color: #ffd700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Badge on Image */
+.vault-badge-one-of-one {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+}
+
+/* Notice inside Inspect Modal */
+.protected-burn-notice {
+  margin-top: 20px;
+  padding: 14px 16px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid #ffd700;
+  border-radius: 6px;
+  color: #ffd700;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+}
+
+.burn-note-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: #00f3ff;
+  font-style: normal;
+}
+
+
+/* ============================================================
+   NFT TRANSFER / GIFT FEATURE STYLES
+   ============================================================ */
+
+/* Inspect Modal Actions */
+.inspect-actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.transfer-trigger-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.15) 0%, rgba(157, 0, 255, 0.15) 100%);
+  border: 1px solid var(--rog-cyan);
+  color: var(--rog-cyan);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.transfer-trigger-btn:hover {
+  background: var(--rog-cyan);
+  color: #000000;
+  box-shadow: 0 0 25px var(--rog-cyan-glow);
+  transform: translateY(-2px);
+}
+
+.modal-exclusive-pill {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #ffd700;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid #ffd700;
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+}
+
+/* Transfer Modal */
+.transfer-backdrop {
+  z-index: 1150;
+}
+
+.transfer-modal {
+  max-width: 640px;
+  border: 1px solid var(--rog-cyan) !important;
+  box-shadow: 0 0 45px rgba(0, 243, 255, 0.18);
+}
+
+.transfer-modal-header {
+  border-bottom-color: var(--rog-cyan) !important;
+}
+
+.transfer-status {
+  color: var(--rog-cyan) !important;
+}
+
+.transfer-modal-body {
+  padding: 28px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.transfer-preview {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--rog-border);
+  background: #090a0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transfer-preview.exclusive-preview {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+}
+
+.transfer-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.transfer-1of1-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.transfer-info {
+  flex: 1;
+}
+
+.transfer-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.transfer-token-id {
+  color: var(--rog-cyan);
+  font-weight: 900;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.transfer-notice-box {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(0, 243, 255, 0.06);
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.transfer-notice-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.transfer-notice-headline {
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: var(--rog-cyan);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.transfer-notice-text {
+  font-size: 0.78rem;
+  color: var(--rog-text-dim);
+  line-height: 1.5;
+}
+
+.transfer-notice-text strong {
+  color: #ffffff;
+}
+
+.transfer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.transfer-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transfer-input-group label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--rog-text-dim);
+}
+
+.transfer-input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #090a10;
+  border: 1px solid var(--rog-border);
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.transfer-input-group input:focus {
+  border-color: var(--rog-cyan);
+  box-shadow: 0 0 15px var(--rog-cyan-glow);
+}
+
+.transfer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.transfer-confirm-btn {
+  flex: 1.4;
+  padding: 13px 18px;
+  background: linear-gradient(135deg, #00f3ff 0%, #0099ff 100%);
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.transfer-confirm-btn:hover:not(:disabled) {
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.transfer-confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.transfer-cancel-btn {
+  flex: 1;
+  padding: 13px 18px;
+  background: transparent;
+  color: var(--rog-text-dim);
+  border: 1px solid var(--rog-border);
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.transfer-cancel-btn:hover:not(:disabled) {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+@media (max-width: 620px) {
+  .transfer-modal-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .transfer-notice-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .transfer-actions {
+    flex-direction: column;
+  }
+}

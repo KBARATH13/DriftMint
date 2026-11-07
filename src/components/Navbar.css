@@ -1,0 +1,299 @@
+/* ============================================================
+   NAVBAR COMPONENT STYLES
+   ============================================================ */
+
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: rgba(10, 11, 16, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rog-border);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.rog-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.dual-logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rog-eye-icon {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 8px var(--rog-red-glow));
+}
+
+.logo-cross {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--rog-cyan);
+  opacity: 0.8;
+  margin: 0 1px;
+}
+
+.oneplus-mini-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #eb0029;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-weight: 900;
+  box-shadow: 0 0 10px rgba(235, 0, 41, 0.45);
+  position: relative;
+}
+
+.oneplus-num {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.oneplus-plus {
+  font-size: 0.65rem;
+  line-height: 1;
+  margin-top: -5px;
+  margin-left: 1px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.brand-drip {
+  color: #ffffff;
+}
+
+.brand-mint {
+  color: var(--rog-red);
+  text-shadow: 0 0 10px var(--rog-red-glow);
+}
+
+.brand-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--rog-cyan);
+  font-weight: 700;
+}
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--rog-text-dim);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tab-btn.active {
+  color: #ffffff;
+  background: var(--rog-red-dim);
+  border-color: var(--rog-red);
+  box-shadow: 0 0 12px var(--rog-red-dim);
+}
+
+.vault-badge {
+  background: var(--rog-red);
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+/* Navbar Right Controls */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.network-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.network-pill.connected {
+  background: rgba(0, 255, 102, 0.08);
+  border: 1px solid rgba(0, 255, 102, 0.4);
+  color: var(--rog-green);
+}
+
+.network-pill.warning {
+  background: rgba(255, 170, 0, 0.12);
+  border: 1px solid #ffaa00;
+  color: #ffaa00;
+  cursor: pointer;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rog-green);
+  box-shadow: 0 0 8px var(--rog-green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.balance-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 0, 51, 0.1);
+  border: 1px solid var(--rog-red);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.balance-pill:hover {
+  background: rgba(255, 0, 51, 0.2);
+  box-shadow: 0 0 10px var(--rog-red-dim);
+}
+
+.token-symbol {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: var(--rog-red);
+  letter-spacing: 1px;
+}
+
+.token-value {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--font-mono);
+}
+
+.add-token-icon {
+  font-size: 0.8rem;
+  color: var(--rog-cyan);
+  margin-left: 2px;
+}
+
+.eth-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--rog-border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+}
+
+.eth-symbol {
+  color: var(--rog-cyan);
+}
+
+.account-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--rog-dark-card);
+  border: 1px solid var(--rog-border);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.account-pill:hover {
+  border-color: var(--rog-red);
+}
+
+.account-pill:hover .disconnect-hover-text {
+  display: block;
+}
+
+.account-pill:hover .account-address {
+  display: none;
+}
+
+.disconnect-hover-text {
+  display: none;
+  color: var(--rog-red);
+  font-weight: 700;
+}
+
+.account-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rog-cyan);
+  box-shadow: 0 0 6px var(--rog-cyan);
+}
+
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+  .navbar-left {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+

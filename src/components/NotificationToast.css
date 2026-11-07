@@ -1,0 +1,55 @@
+/* ============================================================
+   NOTIFICATION TOAST COMPONENT STYLES
+   ============================================================ */
+
+.notification-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  max-width: 420px;
+  width: 100%;
+  background: #11131c;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.toast-info { border-left: 4px solid var(--rog-cyan); }
+.toast-success { border-left: 4px solid var(--rog-green); }
+.toast-error { border-left: 4px solid var(--rog-red); }
+
+.toast-icon { font-size: 1.3rem; }
+
+.toast-body { flex: 1; }
+
+.toast-message {
+  font-size: 0.85rem;
+  color: #ffffff;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.toast-tx-hash {
+  font-size: 0.75rem;
+  color: var(--rog-cyan);
+  font-family: var(--font-mono);
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: var(--rog-text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
