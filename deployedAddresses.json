@@ -1,0 +1,2474 @@
+{
+  "chainId": 31337,
+  "chainName": "Hardhat Local EVM",
+  "contracts": {
+    "AsusToken": {
+      "address": "0x976fcd02f7C4773dd89C309fBF55D5923B4c98a1",
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "initialOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "initialSupply",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "allowance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "needed",
+              "type": "uint256"
+            }
+          ],
+          "name": "ERC20InsufficientAllowance",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balance",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "needed",
+              "type": "uint256"
+            }
+          ],
+          "name": "ERC20InsufficientBalance",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "approver",
+              "type": "address"
+            }
+          ],
+          "name": "ERC20InvalidApprover",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            }
+          ],
+          "name": "ERC20InvalidReceiver",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "ERC20InvalidSender",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            }
+          ],
+          "name": "ERC20InvalidSpender",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableInvalidOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableUnauthorizedAccount",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            }
+          ],
+          "name": "allowance",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "approve",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "balanceOf",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "burn",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "burnFrom",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "decimals",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "mint",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "name",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "symbol",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "totalSupply",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "transfer",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "transferFrom",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ]
+    },
+    "AsusTechGear": {
+      "address": "0x19cEcCd6942ad38562Ee10bAfd44776ceB67e923",
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "initialOwner",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721IncorrectOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "operator",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "ERC721InsufficientApproval",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "approver",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721InvalidApprover",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721InvalidOperator",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721InvalidOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "receiver",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721InvalidReceiver",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "ERC721InvalidSender",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "ERC721NonexistentToken",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableInvalidOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableUnauthorizedAccount",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "approved",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "operator",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "approved",
+              "type": "bool"
+            }
+          ],
+          "name": "ApprovalForAll",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_fromTokenId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_toTokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "BatchMetadataUpdate",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "MetadataUpdate",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "minter",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "status",
+              "type": "bool"
+            }
+          ],
+          "name": "MinterStatusUpdated",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            }
+          ],
+          "name": "TechGearMinted",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "approve",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "balanceOf",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "burn",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "getApproved",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "operator",
+              "type": "address"
+            }
+          ],
+          "name": "isApprovedForAll",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "isMinter",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "isProtectedOneOfOne",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            }
+          ],
+          "name": "mintToUser",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "uri",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "isOneOfOne",
+              "type": "bool"
+            }
+          ],
+          "name": "mintToUser",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "name",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "safeTransferFrom",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "safeTransferFrom",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "operator",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "approved",
+              "type": "bool"
+            }
+          ],
+          "name": "setApprovalForAll",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "minter",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "status",
+              "type": "bool"
+            }
+          ],
+          "name": "setMinter",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes4",
+              "name": "interfaceId",
+              "type": "bytes4"
+            }
+          ],
+          "name": "supportsInterface",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "symbol",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "tokenURI",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "totalMinted",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "transferFrom",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ]
+    },
+    "AsusArmory": {
+      "address": "0xD42912755319665397FF090fBB63B1a31aE87Cee",
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "initialOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "_token",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "_gear",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableInvalidOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "OwnableUnauthorizedAccount",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "ReentrancyGuardReentrantCall",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "nextAvailableClaim",
+              "type": "uint256"
+            }
+          ],
+          "name": "FaucetClaimed",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newCooldown",
+              "type": "uint256"
+            }
+          ],
+          "name": "FaucetConfigUpdated",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum AsusArmory.HardwareTier",
+              "name": "tier",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            }
+          ],
+          "name": "GearItemAdded",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "isActive",
+              "type": "bool"
+            }
+          ],
+          "name": "GearItemUpdated",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "itemName",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum AsusArmory.HardwareTier",
+              "name": "tier",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "priceBurned",
+              "type": "uint256"
+            }
+          ],
+          "name": "GearMinted",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "buyer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "ethSpent",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "asusReceived",
+              "type": "uint256"
+            }
+          ],
+          "name": "TokensPurchased",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "enum AsusArmory.HardwareTier",
+              "name": "tier",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxSupply",
+              "type": "uint256"
+            }
+          ],
+          "name": "addGearItem",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "asusToken",
+          "outputs": [
+            {
+              "internalType": "contract AsusToken",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "buyTokens",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "canClaimFaucet",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "canClaim",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "secondsRemaining",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "claimFaucet",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "newAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "newCooldown",
+              "type": "uint256"
+            }
+          ],
+          "name": "configureFaucet",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "emergencyWithdrawTokens",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "faucetAmount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "faucetCooldown",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getAllGearItems",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum AsusArmory.HardwareTier",
+                  "name": "tier",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "tokenURI",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "isActive",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "totalMinted",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxSupply",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct AsusArmory.GearItem[]",
+              "name": "",
+              "type": "tuple[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getGearCatalogCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            }
+          ],
+          "name": "getGearItem",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "id",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "enum AsusArmory.HardwareTier",
+                  "name": "tier",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "tokenURI",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "isActive",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "totalMinted",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxSupply",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct AsusArmory.GearItem",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "lastFaucetClaim",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            }
+          ],
+          "name": "mintGear",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "renounceOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isActive",
+              "type": "bool"
+            }
+          ],
+          "name": "setGearItemActive",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "newRate",
+              "type": "uint256"
+            }
+          ],
+          "name": "setTokensPerEth",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "techGear",
+          "outputs": [
+            {
+              "internalType": "contract AsusTechGear",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "tokensPerEth",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "itemId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "tokenURI",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "isActive",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "maxSupply",
+              "type": "uint256"
+            }
+          ],
+          "name": "updateGearItem",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "withdrawEth",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ]
+    }
+  },
+  "catalogConfig": [
+    {
+      "id": 0,
+      "name": "ROG Phone 8 Pro",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "150",
+      "code": "ROG-PH8P",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Mobile Device",
+      "overclockRating": "Snapdragon 8 Gen 3 3.3GHz Extreme",
+      "description": "Flagship gaming smartphone with AniMe Vision matrix display, Snapdragon 8 Gen 3, and 165Hz AMOLED."
+    },
+    {
+      "id": 1,
+      "name": "ROG Ally X",
+      "tier": 0,
+      "tierLabel": "Tier 1: Handheld",
+      "price": "150",
+      "code": "ROG-ALLY-X",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Handheld Console",
+      "overclockRating": "AMD Ryzen Z1 Extreme 24GB LPDDR5X",
+      "description": "Windows 11 handheld console powered by AMD Z1 Extreme, 80Wh extended battery, and improved ergonomics."
+    },
+    {
+      "id": 2,
+      "name": "ROG Phone 8 Pro Ultimate 1-of-1",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "450",
+      "code": "ROG-PH8P-1OF1",
+      "brand": "ASUS ROG",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Mobile Device",
+      "overclockRating": "Custom Gold Titanium Binned Silicon",
+      "description": "World exclusive 1-of-1 ROG Phone 8 Pro chassis forged from gold-plated titanium with personalized signature."
+    },
+    {
+      "id": 3,
+      "name": "ROG Swift OLED XG32",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "250",
+      "code": "ROG-XG32-OLED",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "OLED Display",
+      "overclockRating": "4K UHD 240Hz 0.03ms GTG",
+      "description": "32-inch 4K QD-OLED gaming monitor with blisteringly fast 240Hz refresh rate and custom heatsink."
+    },
+    {
+      "id": 4,
+      "name": "ROG Strix 5K",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "250",
+      "code": "ROG-STRIX-5K",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Ultra-Wide Display",
+      "overclockRating": "5K DQHD 165Hz Curved HDR1000",
+      "description": "Dual QHD ultra-wide curvature with DisplayHDR 1000 and ASUS Extreme Low Motion Blur."
+    },
+    {
+      "id": 5,
+      "name": "ROG Swift PG32UCDM 1-of-1 Master",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "600",
+      "code": "ROG-PG32-1OF1",
+      "brand": "ASUS ROG",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "OLED Display",
+      "overclockRating": "Factory Color Calibrated Delta E < 0.5",
+      "description": "Master display reference unit hand-calibrated for pro esports champions. Only 1 in existence."
+    },
+    {
+      "id": 6,
+      "name": "ROG Zephyrus G16",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "500",
+      "code": "ROG-G16-ZEPH",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Ultra-Slim Gaming Laptop",
+      "overclockRating": "Intel Core Ultra 9 + RTX 4090",
+      "description": "CNC aluminum chassis, Slash Lighting array, ROG Nebula OLED 240Hz display, and vapor chamber cooling."
+    },
+    {
+      "id": 7,
+      "name": "ROG Strix SCAR 18",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "500",
+      "code": "ROG-SCAR-18",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Extreme Gaming Laptop",
+      "overclockRating": "Core i9 14900HX 175W TGP RTX 4090",
+      "description": "Unrivaled desktop-grade performance in an 18-inch Mini LED form factor with Conductonaut Extreme liquid metal."
+    },
+    {
+      "id": 8,
+      "name": "ROG Zephyrus G16 Platinum 1-of-1",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "1200",
+      "code": "ROG-G16-1OF1",
+      "brand": "ASUS ROG",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Ultra-Slim Gaming Laptop",
+      "overclockRating": "Max Overclock Unlocked BIOS 6.0GHz",
+      "description": "Custom engraved Platinum Edition Zephyrus G16 with unlocked power delivery firmware. Strictly 1-of-1."
+    },
+    {
+      "id": 9,
+      "name": "ROG Ryujin III 360",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "200",
+      "code": "ROG-RYUJIN-3",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "AIO Liquid Cooler",
+      "overclockRating": "3.5 inch Full-Color LCD Asetek 8th Gen",
+      "description": "Flagship all-in-one liquid CPU cooler equipped with 3.5-inch LCD screen and Noctua iPPC fans."
+    },
+    {
+      "id": 10,
+      "name": "ROG Maximus Z790 HERO",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "350",
+      "code": "ROG-MAX-Z790",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Motherboard",
+      "overclockRating": "20+1 Power Stages DDR5-7800+ PCIe 5.0",
+      "description": "Extreme enthusiast ATX motherboard with Polymo lighting and robust VRM power architecture."
+    },
+    {
+      "id": 11,
+      "name": "ROG Hyperion GR701",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "400",
+      "code": "ROG-HYPERION",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Battlestation Chassis",
+      "overclockRating": "Dual 420mm Radiator Support",
+      "description": "Full-tower gaming chassis with die-cast aluminum handles and integrated ARGB controller."
+    },
+    {
+      "id": 12,
+      "name": "ROG Matrix RTX 4090",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "750",
+      "code": "ROG-MATRIX-4090",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Graphics Card",
+      "overclockRating": "Liquid Metal Cooled 2700MHz Boost",
+      "description": "The apex of graphics power featuring liquid metal thermal compound and 360mm custom magnetic radiator."
+    },
+    {
+      "id": 13,
+      "name": "ROG Matrix RTX 4090 Carbon 1-of-1",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "1500",
+      "code": "ROG-RTX4090-1OF1",
+      "brand": "ASUS ROG",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Graphics Card",
+      "overclockRating": "Silicon Lottery Top 0.01% Bin 3.1GHz Unlocked",
+      "description": "The absolute crown jewel of the Armory. Hand-binned top 0.01% silicon encased in real aerospace carbon fiber."
+    },
+    {
+      "id": 14,
+      "name": "ROG Cetra SpeedNova",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "80",
+      "code": "ROG-CETRA-SN",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Gaming Earbuds",
+      "overclockRating": "ROG SpeedNova 2.4GHz Ultra-Low Latency",
+      "description": "True wireless gaming in-ears featuring dual-mode wireless 2.4 GHz and Bluetooth with ANC."
+    },
+    {
+      "id": 15,
+      "name": "ROG Harpe Ace Aim Lab",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "100",
+      "code": "ROG-HARPE-ACE",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Ultralight Mouse",
+      "overclockRating": "54g Ultralight AimPoint 36,000 DPI",
+      "description": "Co-developed with Aim Lab pro esports players. 54-gram featherlight gaming mouse."
+    },
+    {
+      "id": 16,
+      "name": "ROG Tessen Controller",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "100",
+      "code": "ROG-TESSEN",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Mobile Controller",
+      "overclockRating": "Foldable Mechanical Switches Zero Latency USB-C",
+      "description": "Compact foldable mobile controller turning your smartphone into an authentic console experience."
+    },
+    {
+      "id": 17,
+      "name": "ROG Azoth Extreme",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "150",
+      "code": "ROG-AZOTH-EXT",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Mechanical Keyboard",
+      "overclockRating": "Carbon Fiber Positioning Plate 8000Hz Polling",
+      "description": "Custom 75% mechanical gaming keyboard with aluminum chassis, full-color OLED touchscreen, and gasket mount."
+    },
+    {
+      "id": 18,
+      "name": "ROG Delta S Animate",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "160",
+      "code": "ROG-DELTA-S",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Gaming Headset",
+      "overclockRating": "ESS 9281 Quad DAC AniMe Matrix Displays",
+      "description": "Hi-Res gaming headset with customizable AniMe Matrix ear-cup displays and AI Noise-Canceling mic."
+    },
+    {
+      "id": 19,
+      "name": "ROG Rapture GT-BE98",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "220",
+      "code": "ROG-RAPTURE-BE98",
+      "brand": "ASUS ROG",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "WiFi 7 Router",
+      "overclockRating": "Quad-Band WiFi 7 25,000 Mbps Dual 10G Ports",
+      "description": "World's first quad-band WiFi 7 gaming router delivering uncompromised speed and low latency."
+    },
+    {
+      "id": 20,
+      "name": "ROG Azoth Extreme Golden 1-of-1",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "500",
+      "code": "ROG-AZOTH-1OF1",
+      "brand": "ASUS ROG",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Mechanical Keyboard",
+      "overclockRating": "Hand-Lubed Crystal Switches 24K Gold Accent",
+      "description": "One-of-a-kind ROG Azoth keyboard with 24K gold inlaid chassis and individually hand-tuned switches."
+    },
+    {
+      "id": 21,
+      "name": "OnePlus 12 Flagship",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "160",
+      "code": "OP-12-FLAG",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Mobile Device",
+      "overclockRating": "Snapdragon 8 Gen 3 16GB RAM 5400mAh",
+      "description": "Smooth Beyond Belief. 4th Gen Hasselblad Camera, 2K 120Hz ProXDR display, and 100W SUPERVOOC charging."
+    },
+    {
+      "id": 22,
+      "name": "OnePlus Open Foldable",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "220",
+      "code": "OP-OPEN-FOLD",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Foldable Smartphone",
+      "overclockRating": "Flexion Hinge Dual 120Hz ProXDR Displays",
+      "description": "Open for Everything. Featherweight foldable smartphone with Hasselblad imaging and Canvas multi-tasking."
+    },
+    {
+      "id": 23,
+      "name": "OnePlus 12R Performance",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "120",
+      "code": "OP-12R-PERF",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Mobile Device",
+      "overclockRating": "Snapdragon 8 Gen 2 5500mAh 100W",
+      "description": "Performance in Overdrive. 4th-Gen LTPO 120Hz display with massive 5,500mAh battery for all-day gaming."
+    },
+    {
+      "id": 24,
+      "name": "OnePlus Pad 2",
+      "tier": 0,
+      "tierLabel": "Tier 1: Handheld",
+      "price": "140",
+      "code": "OP-PAD-2",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Tablet Console",
+      "overclockRating": "Snapdragon 8 Gen 3 3K 144Hz 7:5 Display",
+      "description": "Life Made Smooth. Large 3K 144Hz screen with Open Canvas split-screen productivity and Hi-Res 6-speaker audio."
+    },
+    {
+      "id": 25,
+      "name": "OnePlus Pad Go",
+      "tier": 0,
+      "tierLabel": "Tier 1: Handheld",
+      "price": "90",
+      "code": "OP-PAD-GO",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Tablet Console",
+      "overclockRating": "2.4K 90Hz Display 8000mAh Battery",
+      "description": "All-day entertainment tablet with eye-care certified 2.4K screen and quad Dolby Atmos speakers."
+    },
+    {
+      "id": 26,
+      "name": "OnePlus 12 Genshin Keqing 1-of-1",
+      "tier": 0,
+      "tierLabel": "Tier 1: Mobile",
+      "price": "550",
+      "code": "OP-KEQING-1OF1",
+      "brand": "OnePlus",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Custom Smartphone",
+      "overclockRating": "Electro-Violet Custom AG Glass & OS Theme",
+      "description": "Official 1-of-1 Collector Edition OnePlus 12 crafted with Electro-Violet AG glass and custom Lightning Stiletto case."
+    },
+    {
+      "id": 27,
+      "name": "OnePlus TV Q2 Pro 65",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "240",
+      "code": "OP-TV-Q2-65",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "QLED Smart Display",
+      "overclockRating": "4K QLED 120Hz DLG 70W Dynaudio Bar",
+      "description": "65-inch 4K QLED master display with 120Hz refresh rate, Gamma Engine Ultra, and integrated Dynaudio soundbar."
+    },
+    {
+      "id": 28,
+      "name": "OnePlus Monitor X 27",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "200",
+      "code": "OP-MON-X27",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Gaming Monitor",
+      "overclockRating": "2K QHD 165Hz IPS Type-C 65W PD",
+      "description": "27-inch 2K fast IPS esports monitor with 165Hz, DisplayHDR 400, and single-cable Type-C power delivery."
+    },
+    {
+      "id": 29,
+      "name": "OnePlus Monitor E 24",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "110",
+      "code": "OP-MON-E24",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Productivity Monitor",
+      "overclockRating": "FHD 75Hz Ultra-Slim 4.87mm Frame",
+      "description": "Sleek 24-inch IPS monitor with 3-side bezel-less design and TÜV Rheinland low blue light certification."
+    },
+    {
+      "id": 30,
+      "name": "OnePlus QLED Ultra 85 Studio 1-of-1",
+      "tier": 1,
+      "tierLabel": "Tier 2: Monitor",
+      "price": "700",
+      "code": "OP-QLED-85-1OF1",
+      "brand": "OnePlus",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Studio Display",
+      "overclockRating": "85-inch 4K Mini-LED 144Hz 2000 Nits",
+      "description": "Studio reference 85-inch Mini-LED display with motorized Dynaudio sound system. Exactly 1 copy forged."
+    },
+    {
+      "id": 31,
+      "name": "OnePlus Book Pro 16",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "480",
+      "code": "OP-BOOK-PRO16",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Creator Laptop",
+      "overclockRating": "Core Ultra 9 185H 32GB RAM 3.2K 165Hz",
+      "description": "Premium CNC unibody ultra-laptop featuring seamless multi-screen collaboration with OnePlus devices."
+    },
+    {
+      "id": 32,
+      "name": "OnePlus Book 14 Air",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "380",
+      "code": "OP-BOOK-AIR14",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Ultraportable Laptop",
+      "overclockRating": "Ryzen 7 8845HS 1.2kg Magnesium Chassis",
+      "description": "Ultra-thin and lightweight 14-inch productivity notebook delivering 18 hours of continuous battery life."
+    },
+    {
+      "id": 33,
+      "name": "OnePlus Creator Studio Pro 1-of-1",
+      "tier": 2,
+      "tierLabel": "Tier 3: Laptop",
+      "price": "1100",
+      "code": "OP-STUDIO-1OF1",
+      "brand": "OnePlus",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Creator Laptop",
+      "overclockRating": "Dual OLED Touchscreens 64GB 4TB PCIe 5.0",
+      "description": "Concept creative workstation with dual 16-inch 4K OLED touchscreens. Numbered #001 prototype."
+    },
+    {
+      "id": 34,
+      "name": "OnePlus 100W SUPERVOOC GaN Dock",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "150",
+      "code": "OP-100W-GAN",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Power Architecture",
+      "overclockRating": "Dual Type-C + USB-A GaN 100W Output",
+      "description": "Ultra-compact Gallium Nitride dual-port flash charger capable of powering high-demand laptops and phones."
+    },
+    {
+      "id": 35,
+      "name": "OnePlus 50W AIRVOOC Magnetic Base",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "130",
+      "code": "OP-50W-AIR",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Power Architecture",
+      "overclockRating": "50W Wireless Flash Active Liquid Fan Cooling",
+      "description": "High-speed wireless charging dock with integrated aerodynamic twin turbo fan for heat dissipation."
+    },
+    {
+      "id": 36,
+      "name": "OnePlus 80W SUPERVOOC Car Hub",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "110",
+      "code": "OP-80W-CAR",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Power Architecture",
+      "overclockRating": "80W Dual Port Fast Charge Surge Protection",
+      "description": "High-voltage vehicle power hub delivering SUPERVOOC speeds on the road without overheating."
+    },
+    {
+      "id": 37,
+      "name": "OnePlus CyberGaN 240W Battlestation 1-of-1",
+      "tier": 3,
+      "tierLabel": "Tier 4: Component",
+      "price": "800",
+      "code": "OP-240W-1OF1",
+      "brand": "OnePlus",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Power Architecture",
+      "overclockRating": "240W Quad GaN Power Supply Real-Time OLED Wattmeter",
+      "description": "Extreme desktop power delivery console with digital real-time voltage monitoring OLED. Strictly 1-of-1."
+    },
+    {
+      "id": 38,
+      "name": "OnePlus Buds Pro 3",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "90",
+      "code": "OP-BUDS-P3",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Pro Wireless Earbuds",
+      "overclockRating": "Dual Drivers Co-Created with Dynaudio 50dB ANC",
+      "description": "Audiophile-grade earbuds featuring dual DACs, LHDC 5.0 24-bit audio, and personalized Spatial Audio."
+    },
+    {
+      "id": 39,
+      "name": "OnePlus Watch 2 WearOS",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "130",
+      "code": "OP-WATCH-2",
+      "brand": "OnePlus",
+      "isOneOfOne": false,
+      "maxSupply": 0,
+      "category": "Smart Wearable",
+      "overclockRating": "Dual-Engine Architecture 100-Hour Battery",
+      "description": "Stainless steel chassis with sapphire crystal glass, Snapdragon W5 + BES2700 hybrid architecture."
+    },
+    {
+      "id": 40,
+      "name": "OnePlus Keyboard 81 Pro 1-of-1",
+      "tier": 4,
+      "tierLabel": "Tier 5: Peripheral",
+      "price": "400",
+      "code": "OP-KB81-1OF1",
+      "brand": "OnePlus",
+      "isOneOfOne": true,
+      "maxSupply": 1,
+      "category": "Mechanical Keyboard",
+      "overclockRating": "Marble-mallow Keycaps Gasket Mount Custom Rotary",
+      "description": "1-of-1 mechanical masterpiece with customized crystal rotary dial and exclusive Red Alert resonance damping."
+    }
+  ]
+}

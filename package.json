@@ -1,0 +1,29 @@
+{
+  "name": "asus-faucet-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy": "hardhat run scripts/deploy.js"
+  },
+  "keywords": [
+    "hardhat",
+    "solidity",
+    "asus",
+    "armory"
+  ],
+  "author": "",
+  "license": "MIT",
+  "description": "Hardhat EVM contracts for ASUS ROG Hardware Armory",
+  "type": "module",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.2",
+    "hardhat": "^2.29.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1"
+  }
+}
